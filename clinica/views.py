@@ -14,7 +14,7 @@ from django.http import HttpResponseNotFound
 
 def listar_medicos(request):
     medicos = Medico.objects.all()
-    return render(request, 'listar_medicos.html', {'medicos':medicos})
+    return render(request, 'clinica/listar_medicos.html', {'medicos':medicos})
 
 
 def listar_consulta(request, id):
@@ -47,9 +47,9 @@ def criar_consulta(request):
         form = FormConsulta(consulta)
         if form.is_valid():
             form.save()
-            return render(request, 'form_consulta.html', {"msg":"Consulta marcada !"} )
+            return render(request, 'clinica/form_consulta.html', {"msg":"Consulta marcada !"} )
         else:
-            return render(request, 'form_consulta.html', {"msg":"Algo deu errado !"} )
+            return render(request, 'clinica/form_consulta.html', {"msg":"Algo deu errado !"} )
     else:
         form = FormConsulta()
-    return render(request, 'form_consulta.html', {"form":form} )
+    return render(request, 'clinica/form_consulta.html', {"form":form} )
