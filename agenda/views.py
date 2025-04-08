@@ -35,3 +35,28 @@ def lidar_servico(request,pk=None):
             return Response({"Sucesso": "Serviço criado"}, status=status.HTTP_201_CREATED)
         return Response({"ERRO": 'Serializer invalido'},status=status.HTTP_400_BAD_REQUEST)
         
+
+
+@api_view(['GET', "POST"])
+def lidar_agendamento(request,pk=None):
+
+    if request.method == "GET":
+        if pk is not None:
+            try:
+                agendamento = agendamento.objects.get(pk=pk)
+                serializer = AgendamentoSerializer(agendamento, many=False)
+                return Response({"Sucesso": serializer.data}, status=status.HTTP_200_OK)
+            except agendamento.DoesNotExist:
+                return Response({"ERRO": "Não encontrado"}, status = status.HTTP_404_NOT_FOUND)
+        else:
+            agendamento = agendamento.objects.all()
+            serializer = AgendamentoSerializer(agendamento, many=True)
+            return Response({"Sucesso": serializer.data}, status=status.HTTP_200_OK)
+
+    if request.method == "POST":
+        serializer = AgendamentoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"Sucesso": "Serviço criado"}, status=status.HTTP_201_CREATED)
+        return Response({"ERRO": 'Serializer invalido'},status=status.HTTP_400_BAD_REQUEST)
+        
