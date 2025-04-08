@@ -4,7 +4,7 @@ from .models import Servico,Agendamento
 class ServicoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Servico
-        fields = '__all__'
+        fields = ['nome', 'duracao', 'preco']
 
 
 class AgendamentoSerializer(serializers.ModelSerializer):
