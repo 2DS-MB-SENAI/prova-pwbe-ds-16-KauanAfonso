@@ -9,7 +9,8 @@ from .models import Servico, Agendamento
 
 
 '''
-Função para POST E GET de um serviço
+Função para POST E GET de um serviço 
+a função lida com os serviços
 
 '''
 @api_view(['GET', "POST"])
@@ -20,7 +21,7 @@ def lidar_servico(request,pk=None):
             try:
                 servico = Servico.objects.get(pk=pk)
                 serializer = ServicoSerializer(servico, many=False)
-                return Response({"Sucesso": serializer.data}, status=status.HTTP_200_OK)
+                return Response({"Sucesso": []}, status=status.HTTP_200_OK)
             except Servico.DoesNotExist:
                 return Response({"ERRO": "Não encontrado"}, status = status.HTTP_404_NOT_FOUND)
         else:
@@ -34,11 +35,13 @@ def lidar_servico(request,pk=None):
             serializer.save()
             return Response({"Sucesso": "Serviço criado"}, status=status.HTTP_201_CREATED)
         return Response({"ERRO": serializer.errors},status=status.HTTP_400_BAD_REQUEST)
-    
-    if request.method == "DELETE":
-        return Response({"Reposta": []}, status=status.HTTP_200_OK)
-        
+                
 
+'''
+Função para POST E GET de um serviço 
+a função lida com os agendamentos
+
+'''
 
 @api_view(['GET', "POST"])
 def lidar_agendamento(request,pk=None):
