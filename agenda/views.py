@@ -21,7 +21,7 @@ def lidar_servico(request,pk=None):
             try:
                 servico = Servico.objects.get(pk=pk)
                 serializer = ServicoSerializer(servico, many=False)
-                return Response({"Sucesso": []}, status=status.HTTP_200_OK)
+                return Response({"Sucesso": serializer.data}, status=status.HTTP_200_OK)
             except Servico.DoesNotExist:
                 return Response({"ERRO": "Não encontrado"}, status = status.HTTP_404_NOT_FOUND)
         else:
@@ -33,7 +33,7 @@ def lidar_servico(request,pk=None):
         serializer = ServicoSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({"Sucesso": "Serviço criado"}, status=status.HTTP_201_CREATED)
+            return Response({"Sucesso": []}, status=status.HTTP_201_CREATED)
         return Response({"ERRO": serializer.errors},status=status.HTTP_400_BAD_REQUEST)
                 
 
