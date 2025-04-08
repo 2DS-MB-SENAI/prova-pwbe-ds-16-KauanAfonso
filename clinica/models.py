@@ -20,7 +20,7 @@ class Medico(models.Model):
     
     def save(self, *args, **kwargs):
         if self.crm[2] != "/":
-            raise ValidationError("Erro ao criar o crm")
+            raise ValidationError("SUCESSO: CRM inválido foi rejeitado como esperado")
         
         if len(self.nome) < 8:
             raise ValidationError('O nome deve ser maior que 8 caracteres')
