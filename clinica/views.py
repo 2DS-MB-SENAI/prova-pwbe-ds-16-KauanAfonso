@@ -26,6 +26,15 @@ def listar_consulta(request, id):
     return render(request, "", {'consultas': consultas})
 
 
+def listar_medico_um(request, id):
+    try:
+        medicos = get_object_or_404(Medico,pk=id)
+    except:
+        return HttpResponseNotFound("Não encontrado")
+    
+    return render(request, "", {'medicos': medicos})
+
+
 '''
 
 func para criar consulta com base no formulario FormConsulta;
