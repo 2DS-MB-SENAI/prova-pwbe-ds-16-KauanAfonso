@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Servico(models.Model):
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=100)
     duracao = models.PositiveIntegerField()
     preco = models.DecimalField(max_digits=6, decimal_places=2)
 

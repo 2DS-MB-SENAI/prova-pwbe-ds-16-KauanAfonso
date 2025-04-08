@@ -33,7 +33,7 @@ def lidar_servico(request,pk=None):
         if serializer.is_valid():
             serializer.save()
             return Response({"Sucesso": "Serviço criado"}, status=status.HTTP_201_CREATED)
-        return Response({"ERRO": 'Serializer invalido'},status=status.HTTP_400_BAD_REQUEST)
+        return Response({"ERRO": serializer.errors},status=status.HTTP_400_BAD_REQUEST)
         
 
 
