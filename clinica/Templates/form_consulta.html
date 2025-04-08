@@ -1,0 +1,15 @@
+
+
+<form method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type='submit'>Enviar</button>
+
+</form>
+
+
+{% for m in  msg%}
+
+<p>{{msg}}</p>
+{% endfor %}

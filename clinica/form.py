@@ -1,7 +1,7 @@
-from django import form
+from django import forms
 from .models import *
 
-class FormConsulta(form.Form):
+class FormConsulta(forms.ModelForm):
     class Meta:
         model = Client
         fields = '__all__'

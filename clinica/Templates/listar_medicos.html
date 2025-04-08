@@ -1,0 +1,28 @@
+<h2>Medicos</h2>
+
+
+<ul>
+
+{% for medico in medicos %}
+
+<li>
+    Nome: {{medico.nome}}
+</li>
+
+<li>
+    crm: {{medico.crm}}
+</li>
+
+<li>
+    Especialidade: {{medico.especialidade}}
+</li>
+
+<li>
+    email: {{medico.email}}
+</li>
+
+
+{% endfor %}
+
+
+</ul>
